@@ -20,5 +20,8 @@ from gallery import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.home, name = 'home'),
+    url(r'^today/$', views.images_of_day, name = 'imagesToday'),
+    url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_images,name = 'pastImages') 
+
 
 ]
