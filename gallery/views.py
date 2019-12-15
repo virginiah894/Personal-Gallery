@@ -3,6 +3,7 @@
 
 from django.shortcuts import render
 import datetime as dt
+from .models import Image,Location,Category
 
 
 def home(request):
@@ -10,7 +11,8 @@ def home(request):
 
 def images_of_day(request):
     date = dt.date.today()
-    return render(request, 'all-images/today-images.html', {"date": date,})
+    images = Image.todays_images()
+    return render(request, 'all-images/today-images.html', {"date": date,"images":images})
 
 def past_days_images(request, past_date):
 
@@ -25,5 +27,18 @@ def past_days_images(request, past_date):
 
     if date == dt.date.today():
         return redirect(images_of_day)
+    images= Image.todays_images(date)
 
-    return render(request, 'all-images/past-images.html', {"date": date})
+    return render(request, 'all-images/past-images.html', {"date": date,"images":images})
+def search_results(request):
+
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_Name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-images/search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-images/search.html',{"message":message})
