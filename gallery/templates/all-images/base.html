@@ -1,29 +1,51 @@
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% load static%}
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
 
   {% if title %}
   <title>Perry Gallery - {{title}}</title>
   {% else %}
-    <title>Perry Gallery</title>
+  <title>Perry Gallery</title>
   {% endif %}
-{% block styles %}
+  {% block styles %}
   {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock %}
+  {% endblock %}
+  <!--  -->
+  {% block script %}
+  {% bootstrap_javascript jquery='full' %}
+  <script src="{% static 'javascript.js' %}"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+
+  {% endblock %}
 
 
-
+  <!--  -->
 </head>
+
 <body>
   {% include "navbar.html"%}
-    {% block content %} <h1>Images for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+  
+  {% block content%}
+  {%endblock%}
   {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %}
-{% endblock %}
-  </body>
+  <script src="{% static 'js/javascript.js' %}"></script>
+  {% endblock %}
+</body>
+
 </html>
