@@ -70,5 +70,5 @@ python3 manage.py tests
 * Django - The web framework used
 * JQUERY
 ## License
-[MIT]()
+[MIT](https://github.com/virginiah894/Personal-Gallery/blob/master/LICENSE)
 
