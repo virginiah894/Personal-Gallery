@@ -1,5 +1,5 @@
 $(function() {
-  $("input").click(function() {
+  $("#cpaste").click(function() {
   $(this).focus();
   $(this).select();
   document.execCommand('cpaste');
